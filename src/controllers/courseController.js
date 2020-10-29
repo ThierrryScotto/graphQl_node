@@ -45,9 +45,20 @@ const getCourses = (args) => {
   }
 };
 
+const updateCourseTopic = ({ id, topic }) => {
+  coursesData.map(course => {
+    if (course.id === id) {
 
+      course.topic = topic;
+      return course;
+    }
+  })
+
+  return coursesData.filter(course => course.id == id)[0];
+};
 
 module.exports = {
   getCourse,
-  getCourses
+  getCourses,
+  updateCourseTopic
 }

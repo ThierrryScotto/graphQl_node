@@ -8,6 +8,9 @@ var schema = buildSchema(`
     course(id: Int!): Course
     courses(topic: String): [Course]
   }
+  type Mutation {
+    updateCourseTopic(id: Int!, topic: String!): Course
+  }
   type Course {
     id: Int
     title: String
@@ -20,7 +23,8 @@ var schema = buildSchema(`
 
 const root = {
   course: courseController.getCourse,
-  courses: courseController.getCourses
+  courses: courseController.getCourses,
+  updateCourse: courseController.updateCourseTopic
 };
 
 module.exports = { schema, root };
